@@ -12,7 +12,7 @@ class ArticleIndexer:
         data = {
             "_dtype_id": article["id"],
             "_dtype": "article",
-            "autocomplete": article["title"]
+            "autocomplete": article["title"],
         }
 
         try:
@@ -27,7 +27,7 @@ class ArticleIndexer:
         data = {
             "_dtype_id": author["id"],
             "_dtype": "author",
-            "autocomplete": author["nickname"]
+            "autocomplete": author["nickname"],
         }
 
         try:

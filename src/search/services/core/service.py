@@ -9,6 +9,7 @@ from nameko_tracer import Tracer
 from search.dependencies.elasticsearch_searcher import ElasticsearchSearcher
 from search.services.core.search_autocomplete import AutocompleteMixin
 
+
 class SearchService(AutocompleteMixin):
 
     name = "search"

@@ -20,7 +20,7 @@ setup(
             "pytest==6.0.1",
             "coverage==4.5.3",
             "flake8>=3.7.7",
-            "black==20.8b1",
+            "black==19.10b0",
         ]
     },
     zip_safe=True,
