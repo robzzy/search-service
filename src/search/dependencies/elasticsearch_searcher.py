@@ -27,7 +27,20 @@ class ElasticsearchSearcherApiWrapperBase:
 class ElasticsearchSearcher(ElasticsearchDependencyProvider):
     class ApiWrapper(ElasticsearchSearcherApiWrapperBase):
         def _apply_queries(self, index, **kwargs):
-            queries = Q("match_all")
+            term = kwargs.get("term")
+
+            should = [Q("match_all")]
+
+            if term:
+
+                match_query = Q("match", autocomplete=term)
+                should.append(match_query)
+
+                phrase_query = Q("match_phrase", autocomplete=term)
+                should.append(phrase_query)
+
+            queries = Q("bool", should=should)
+
             return queries
 
     def setup(self):

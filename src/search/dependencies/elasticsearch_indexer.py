@@ -33,12 +33,12 @@ class ElasticsearchIndexer(ElasticsearchDependencyProvider):
             return self.get_document_by_id(Autocomplete, INDEX, es_id)
 
         def create_autocomplete(self, fields):
-            es_id = f"{fields['_dtype']}_{fields['_id']}"
+            es_id = f"{fields['_dtype']}_{fields['_dtype_id']}"
             self.save_document(Autocomplete, INDEX, fields, es_id)
 
         def update_autocomplete(self, fields):
-            es_id = f"{fields['_dtype']}_{fields['_id']}"
-            self.update_autocomplete(Autocomplete, INDEX, fields, es_id)
+            es_id = f"{fields['_dtype']}_{fields['_dtype_id']}"
+            self.update_document(Autocomplete, INDEX, fields, es_id)
 
         def delete_autocomplete(self, _dtype, _id):
             es_id = f"{_dtype}_{_id}"
