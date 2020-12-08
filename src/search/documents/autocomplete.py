@@ -12,10 +12,6 @@ from search.indexes.analyzers import autocomplete_analyzer
 
 
 class Autocomplete(Document):
-
-    class Meta:
-        all = MetaField(enabled=False)
-        dynamic = MetaField("strict")
     
     _dtype = Keyword()
     _dtype_id = Integer()

@@ -22,11 +22,3 @@ class ElasticsearchDependencyProvider(DependencyProvider):
 
     def get_dependency(self, worker_ctx):
         raise NotImplementedError()
-
-
-class ElasticsearchSearchApiWrapperBase:
-    def __init__(self, client, config=None):
-        self.client = client
-        self.search = None
-        self.search_filters = []
-        self.config = config
