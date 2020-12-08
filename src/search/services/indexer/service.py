@@ -7,9 +7,10 @@ from nameko.web.handlers import http
 from nameko_tracer import Tracer
 
 from search.dependencies.elasticsearch_indexer import ElasticsearchIndexer
+from search.services.indexer.index_articles import ArticleIndexer
 
 
-class IndexerService:
+class IndexerService(ArticleIndexer):
 
     name = "indexer"
     tracer = Tracer()
