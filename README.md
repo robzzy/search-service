@@ -1,2 +1,2 @@
 # search-servivce
-Create auto complete for robzzy
+Create autocomplete for robzzy
