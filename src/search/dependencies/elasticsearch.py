@@ -15,11 +15,13 @@ class ElasticsearchDependencyProvider(DependencyProvider):
     def setup(self):
         host = config.get("ELASTICSEARCH_URI")
         self.client = connections.create_connection(
-            hosts=[host], timeout=ES_CONNECTION_TIMEOUT, retry_on_timeout=True,
+            hosts=[host],
+            timeout=ES_CONNECTION_TIMEOUT,
+            retry_on_timeout=True,
         )
 
     def get_dependency(self, worker_ctx):
-        return self.ApiWrapper(self.client, config).find
+        raise NotImplementedError()
 
 
 class ElasticsearchSearchApiWrapperBase:
