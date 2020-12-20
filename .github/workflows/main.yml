@@ -26,7 +26,8 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-latest
-    stps:
+
+    steps:
     - uses: actions/checkout@v2
     - name: Setup
       uses: actions/setup-python@v2
@@ -44,6 +45,7 @@ jobs:
   push:
     needs: build
     runs-on: ubutu-latest
+
     steps:
     - uses: actions/checkout@v2
     - name: Download images
