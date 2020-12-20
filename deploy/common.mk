@@ -1,5 +1,3 @@
-.PHONY: build
-
 .PHONY: etc
 
 ENV ?= default
@@ -9,7 +7,6 @@ REMOTE_DOCKER_HOST ?= zengzhiyuan
 SERVICE_NAME := search-service
 
 # docker
-
 build-image:
 	docker build -t $(SERVICE_NAME)-$(COMPONENT):$(TAG) .;
 
