@@ -24,6 +24,7 @@ jobs:
         make coverage
   
   build:
+    needs: test
     runs-on: ubuntu-latest
     stps:
     - uses: actions/checkout@v2
@@ -41,6 +42,7 @@ jobs:
         path: docker-images/search-service.tar
 
   push:
+    needs: build
     runs-on: ubutu-latest
     steps:
     - uses: actions/checkout@v2
