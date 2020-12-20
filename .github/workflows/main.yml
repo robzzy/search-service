@@ -57,6 +57,7 @@ jobs:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       run: |
+        echo $DOCKER_USERNAME
         make docker-login
         make docker-load
         make docker-tag

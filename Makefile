@@ -64,7 +64,7 @@ build: build-base
 	for image in $(IMAGES) ; do TAG=$(TAG) make -C deploy/$$image build-image; done
 
 docker-login:
-	echo $$DOCKER_PASSWORD | docker login --username=$(DOCKER_USERNAME) --password-stdin
+	echo $$DOCKER_PASSWORD | docker login --username=$$DOCKER_USERNAME --password-stdin
 
 docker-save:
 	mkdir -p docker-images
