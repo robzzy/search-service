@@ -16,7 +16,7 @@ TAG ?= $(shell git rev-parse HEAD)
 endif
 
 HTMLCOV_DIR ?= htmlcov
-IMAGES := core
+IMAGES := core indexer
 
 CONTEXT ?= minikube
 NAMESPACE ?= default
@@ -67,11 +67,10 @@ docker-login:
 	echo $$DOCKER_PASSWORD | docker login --username=$(DOCKER_USERNAME) --password-stdin
 
 docker-save:
-	mkdir -p docker-images
-	docker save -o docker-images/search-service.tar $(foreach image, $(IMAGES), search-service-$(image):$(TAG))
+	docker save -o search-service.tar $(foreach image, $(IMAGES), search-service-$(image):$(TAG))
 
 docker-load:
-	docker load -i docker-images/search-service.tar
+	docker load -i search-service.tar
 
 docker-tag:
 	for image in $(IMAGES); do make -C deploy/$$image docker-tag; done
