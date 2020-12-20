@@ -16,7 +16,7 @@ TAG ?= $(shell git rev-parse HEAD)
 endif
 
 HTMLCOV_DIR ?= htmlcov
-IMAGES := core
+IMAGES := core indexer
 
 CONTEXT ?= minikube
 NAMESPACE ?= default

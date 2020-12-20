@@ -6,8 +6,7 @@ name: Search Service
 on: push
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,3 +22,38 @@ jobs:
     - name: Lint and Test
       run: |
         make coverage
+  
+  build:
+    runs-on: ubuntu-latest
+    stps:
+    - uses: actions/checkout@v2
+    - name: Setup
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Build
+      run: |
+        make build docker-save
+    - name: Upload images
+      uses: actions/upload-artifact@v2
+      with:
+        name: docker-images
+        path: docker-images/search-service.tar
+
+  push:
+    runs-on: ubutu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Download images
+      uses: actions/download-artifact@v2
+      with:
+        name: docker-images
+    - name: Push
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: |
+        make docker-login
+        make docker-load
+        make docker-tag
+        make push-images
